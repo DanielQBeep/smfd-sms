@@ -20,7 +20,7 @@ app.use(bodyParser.json())
 app.post('/api/send-sms', async (request, res) => {
     try {
 
-        if (!request.body.recipient || !request.body.message) {
+        if ((!request.body.recipient || !request.body.identifier) || (!request.body.message || !request.body.otp)) {
             return res.status(400).json({ error: 'Missing required fields: recipient and message' });
         }
         

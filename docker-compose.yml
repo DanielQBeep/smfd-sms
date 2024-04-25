@@ -6,3 +6,4 @@ services:
     command: node app.js
     ports:
       - 9876:9876
+    restart: always
