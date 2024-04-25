@@ -29,7 +29,7 @@ app.post('/api/send-sms', async (request, res) => {
         const authString = 'Basic ' + Buffer.from(`${username}:${password}`).toString('base64')
         const data = JSON.stringify({
             sendid: senderId,
-            recipient: [{ dstno: recipient ?? identifier, msg: message ?? otp, type: 1 }],
+            recipient: [{ dstno: recipient || identifier, msg: message || otp, type: 1 }],
             agreedterm: 'YES',
             method: 'isms_send_all_id',
             });
