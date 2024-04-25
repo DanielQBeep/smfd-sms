@@ -1,0 +1,8 @@
+version: '3.8'
+
+services:
+  sms:
+    build: .
+    command: node app.js
+    ports:
+      - 9876:9876
