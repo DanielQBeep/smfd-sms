@@ -24,12 +24,12 @@ app.post('/api/send-sms', async (request, res) => {
             return res.status(400).json({ error: 'Missing required fields: recipient and message' });
         }
         
-        const { recipient, message} = request.body
+        const { recipient, message, identifier, otp } = request.body
 
         const authString = 'Basic ' + Buffer.from(`${username}:${password}`).toString('base64')
         const data = JSON.stringify({
             sendid: senderId,
-            recipient: [{ dstno: recipient, msg: message, type: 1 }],
+            recipient: [{ dstno: recipient ?? identifier, msg: message ?? otp, type: 1 }],
             agreedterm: 'YES',
             method: 'isms_send_all_id',
             });
